@@ -9,6 +9,7 @@
         <entry key="..\:/Users/adils/Documents/GitHub/PhoneBook/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/adils/Documents/GitHub/PhoneBook/app/src/main/res/layout/activity_student_form.xml" value="0.25" />
         <entry key="..\:/Users/adils/Documents/GitHub/PhoneBook/app/src/main/res/layout/activity_student_list.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/adils/Documents/GitHub/PhoneBook/app/src/main/res/menu/activity_list_students_menu.xml" value="0.1" />
       </map>
     </option>
   </component>
@@ -21,6 +22,6 @@
   <component name="com.itcodebox.notebooks.projectservice.ProjectUIState">
     <option name="selectedNotebookId" value="3" />
     <option name="selectedChapterId" value="6" />
-    <option name="selectedNoteId" value="7" />
+    <option name="selectedNoteId" value="10" />
   </component>
 </project>
