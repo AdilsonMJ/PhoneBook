@@ -48,4 +48,12 @@ public class StudentDAO {
     public List<Student> every() {
         return new ArrayList<>(studentList);
     }
+
+    public void remove(Student studentSelect) {
+        Student studentReturn = lookingIfStudentExist(studentSelect);
+        if (studentReturn != null){
+            studentList.remove(studentReturn);
+        }
+
+    }
 }
