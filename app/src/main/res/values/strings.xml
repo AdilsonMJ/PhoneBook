@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PhoneBook</string>
+    <string name="name">Name</string>
+    <string name="cellphone">Cellphone</string>
+    <string name="email">Email</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+</resources>
