@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PhoneBook">
         <activity
+            android:name=".ui.activity.activiti_students_show_infos"
+            android:exported="true"
+            android:theme="@style/Theme.PhoneBookActionBar"/>
+        <activity
             android:name=".ui.activity.ListStudentActivity"
             android:exported="true">
             <intent-filter>
@@ -18,13 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ui.activity.FormStudentActivity"
-            android:theme="@style/Theme.PhoneBookActivityFormStudent"
-            android:exported="true">
-        </activity>
-
+            android:exported="true"
+            android:theme="@style/Theme.PhoneBookActionBar"/>
     </application>
 
 </manifest>

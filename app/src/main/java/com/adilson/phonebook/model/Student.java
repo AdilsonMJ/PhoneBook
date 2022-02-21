@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
-public class Student implements Serializable {
+public class Student implements Serializable{
     private int id = 0;
     private  String name;
     private  String cell;
@@ -58,7 +58,6 @@ public class Student implements Serializable {
     public String toString() {
         return name;
     }
-
 
     public boolean hasIdValid() {
         return id > 0;

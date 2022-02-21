@@ -6,10 +6,14 @@ import static com.adilson.phonebook.ui.activity.ConstsActivities.TITLE_APPBAR_FO
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.adilson.phonebook.DAO.StudentDAO;
@@ -22,7 +26,6 @@ public class FormStudentActivity extends AppCompatActivity {
     private EditText fieldName;
     private EditText fieldCell;
     private EditText fieldEmail;
-    private Button buttonCancel;
     private Student student;
 
     @Override
@@ -31,15 +34,29 @@ public class FormStudentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_form_student);
 
         initializeTheField();
-        configButtonSave();
         uploadInformationOfStudents();
-        cancel();
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_form_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+
+        if (itemId == R.id.activity_form_menu_salvar) {
+            finishForm();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void uploadInformationOfStudents() {
         Intent dados = getIntent();
-        if (dados.hasExtra("student")){
+        if (dados.hasExtra("student")) {
             student = (Student) dados.getSerializableExtra(KEYSTUDENT);
             toEditStudentFillField();
             setTitle(TITLE_APPBAR_FORMSTUDENTACTIVITY_EDIT);
@@ -55,40 +72,18 @@ public class FormStudentActivity extends AppCompatActivity {
         fieldEmail.setText(student.getEmail());
     }
 
-    private void cancel() {
-        buttonCancel = findViewById(R.id.activity_form_student_button_cancel);
-        cancelForm();
-    }
-
-    private void cancelForm() {
-        buttonCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-    }
-
-    private void configButtonSave() {
-        Button saveButton = findViewById(R.id.activity_form_student_save);
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                FinishForm();
-            }
-        });
-    }
-
-    private void FinishForm() {
+    private void finishForm() {
         fillFieldObjetStudent();
-        if (student.hasIdValid()){
-            dao.Edit(student);
+        if (!(student.getName().length() == 0 || student.getName() == null)){
+            if (student.hasIdValid()) {
+                dao.Edit(student);
+            } else {
+                dao.save(student);
+            }
+            finish();
         } else {
-            dao.save(student);
+            Toast.makeText(FormStudentActivity.this, "Need fill the field The NAME", Toast.LENGTH_LONG).show();
         }
-
-        finish();
     }
 
     private void initializeTheField() {
@@ -102,8 +97,11 @@ public class FormStudentActivity extends AppCompatActivity {
         String cell = fieldCell.getText().toString();
         String email = fieldEmail.getText().toString();
 
+
         student.setName(name);
         student.setCell(cell);
         student.setEmail(email);
+
+
     }
 }
